@@ -2,12 +2,14 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 import { getStatusColor, getStatusLabel, leaveApplications, leaveTypes, users } from "@/data/dummyData";
 import { toast } from "@/hooks/use-toast";
 import { Layout } from "@/layout/Layout";
-import { Briefcase, Building2, Calendar, CheckCircle, ChevronRight, Clock, Filter, Search, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Briefcase, Building2, Calendar, CheckCircle, ChevronRight, Clock, Filter, MessageSquare, Search, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -217,6 +219,70 @@ const HODPendingReviews = () => {
                     )}
                 </div>
             </div>
+
+            {/* Endorse Dialog */}
+            <Dialog open={endorseDialogOpen} onOpenChange={setEndorseDialogOpen}>
+                <DialogContent className="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle>Endorse Application</DialogTitle>
+                    <DialogDescription>You are about to endorse this leave application. It will be forwarded to HR for verification.</DialogDescription>
+                </DialogHeader>
+                {selectedApp && (
+                    <div className="space-y-4">
+                    <WorkflowStepper currentStep={1} />
+                    <Separator />
+                    <div className="space-y-1 text-sm">
+                        <p><span className="font-semibold">Applicant:</span> {selectedEmployee?.name}</p>
+                        <p><span className="font-semibold">Leave Type:</span> {selectedLeaveType?.name}</p>
+                        <p><span className="font-semibold">Duration:</span> {selectedApp.days} days</p>
+                    </div>
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                        <MessageSquare className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-medium">Comments</span>
+                        </div>
+                        <Textarea placeholder="Add your comments..." value={comments} onChange={(e) => setComments(e.target.value)} rows={3} />
+                    </div>
+                    </div>
+                )}
+                <DialogFooter>
+                    <Button variant="outline" onClick={() => { setEndorseDialogOpen(false); setComments(''); }}>Cancel</Button>
+                    <Button onClick={handleEndorse}>Confirm Endorsement</Button>
+                </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            {/* Not Endorse Dialog */}
+            <Dialog open={notEndorseDialogOpen} onOpenChange={setNotEndorseDialogOpen}>
+                <DialogContent className="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle>Not Endorse Application</DialogTitle>
+                    <DialogDescription>You are about to not endorse this leave application. Please provide a reason.</DialogDescription>
+                </DialogHeader>
+                {selectedApp && (
+                    <div className="space-y-4">
+                    <WorkflowStepper currentStep={1} />
+                    <Separator />
+                    <div className="space-y-1 text-sm">
+                        <p><span className="font-semibold">Applicant:</span> {selectedEmployee?.name}</p>
+                        <p><span className="font-semibold">Leave Type:</span> {selectedLeaveType?.name}</p>
+                        <p><span className="font-semibold">Duration:</span> {selectedApp.days} days</p>
+                    </div>
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                        <MessageSquare className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-medium">Comments <span className="text-destructive">*</span></span>
+                        </div>
+                        <Textarea placeholder="Add your comments..." value={comments} onChange={(e) => setComments(e.target.value)} rows={3} />
+                    </div>
+                    </div>
+                )}
+                <DialogFooter>
+                    <Button variant="outline" onClick={() => { setNotEndorseDialogOpen(false); setComments(''); }}>Cancel</Button>
+                    <Button variant="destructive" onClick={handleNotEndorse}>Confirm</Button>
+                </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </Layout>
     )
 }
