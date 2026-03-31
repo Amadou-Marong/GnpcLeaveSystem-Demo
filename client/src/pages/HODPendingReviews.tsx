@@ -116,7 +116,7 @@ const HODPendingReviews = () => {
                 <div className="flex flex-col md:flex-row gap-4">
                     <div className="relative flex-1">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input placeholder="Search applications..." className="pl-10" />
+                        <Input placeholder="Search applications..." className="pl-10" value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <Button variant="outline" className="gap-2">
                      <Filter className="w-4 h-4" />

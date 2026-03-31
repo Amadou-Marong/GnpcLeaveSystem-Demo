@@ -385,7 +385,7 @@ export const leaveApplications: LeaveApplication[] = [
     reason: 'Family vacation during the holidays',
     status: 'rejected',
     appliedDate: '2024-12-10',
-  },
+  }
 
 ];
 
