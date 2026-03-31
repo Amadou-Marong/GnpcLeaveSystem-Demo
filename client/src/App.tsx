@@ -26,6 +26,7 @@ import RolesPermissions from './pages/RolesPermissions'
 import HODPendingReviews from './pages/HODPendingReviews'
 import ApplicationDetails from './pages/ApplicationDetails'
 import NotFound from './pages/404'
+import LeaveWorkflowQueue from './pages/LeaveWorkflowQueue'
 
 const queryClient = new QueryClient()
 
@@ -41,9 +42,6 @@ const AppContent = () => {
         <Route path='/leave-history' element={<LeaveHistory />} />
         <Route path='/all-leaves' element={<AllLeaves />} />
 
-        <Route path="/application/:id" element={<ApplicationDetails />} />
-        {/* <Route path='/leave-balances' element={<LeaveBalances />} /> */}
-        {/* <Route path='/leave-types' element={<LeaveTypes />} /> */}
         
         <Route path='/leave-policies' element={<LeavePolicies />}/>
         <Route path='/leave-policies/leave-entitlement' element={<LeaveEntitlements />}/>
@@ -51,6 +49,10 @@ const AppContent = () => {
         <Route path='/leave-policies/leave-balances' element={<LeaveBalances />}/>
 
         <Route path="/pending-reviews" element={<HODPendingReviews />} />
+        {/* <Route path='/pending-verification' element={<PendingVerification />} />  */}
+
+        <Route path="/leave-workflow" element={<LeaveWorkflowQueue />} />
+        <Route path="/application/:id" element={<ApplicationDetails />} />
 
         <Route path='/employees' element={<Employees />} />
         <Route path='/employees/:id' element={<EmployeeProfile />} />

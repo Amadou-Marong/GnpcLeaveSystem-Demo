@@ -14,6 +14,7 @@ import {
   Award,
   ShieldCheck,
   Clock4,
+  UserCheck,
 } from "lucide-react"
 
 import { NavLink, useLocation } from "react-router"
@@ -64,7 +65,8 @@ export function AppSidebar() {
             { title: "Apply Leave", url: "/apply-leave", icon: FileText },
             { title: "My Applications", url: "/my-applications", icon: ClipboardList },
             { title: "Leave History", url: "/leave-history", icon: History },
-            { title: "Pending Reviews", url: "/pending-reviews", icon: Clock4 },
+            // { title: "Pending Verification", url: "/pending-verification", icon: UserCheck },
+            { title: "Leave Workflow", url: "/leave-workflow", icon: Clock4 },
             { title: "All Leaves", url: "/all-leaves", icon: List },
             { title: "Apply on Behalf", url: "/apply-on-behalf", icon: UserPlus },
             ],
@@ -92,12 +94,22 @@ export function AppSidebar() {
             ]
         },
         {
-            title: "Calendar",
-            icon: CalendarDays,
+            title: "Team Management",
+            icon: UserCheck,
             children: [
-            { title: "Team Calendar", url: "/team-calendar", icon: Calendar },
-            { title: "Organization Calendar", url: "/org-calendar", icon: CalendarDays },
-            ],
+                { title: "Team Calendar", url: "/team-calendar", icon: Calendar },
+                { title: "Pending Reviews", url: "/pending-reviews", icon: Clock4 },
+            ]
+        },
+        {
+            title: "Organization Calendar",
+            icon: CalendarDays,
+            url: "/org-calendar"
+        },
+        {
+            title: "Settings",
+            icon: Settings,
+            url: "/settings",
         },
     ]
 

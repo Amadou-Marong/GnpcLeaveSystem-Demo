@@ -69,18 +69,26 @@ export interface LeaveBalance {
   pending: number;
 }
 
+
 export interface LeaveApplication {
-    id: string;
-    employeeId: string;
-    leaveTypeId: string;
-    startDate: string;
-    endDate: string;
-    days: number;
-    reason: string;
-    status: 'pending_hod' | 'pending_admin' | 'approved' | 'rejected';
-    appliedDate: string;
-    hodComment?: string;
-    adminComment?: string;
+  id: string;
+  employeeId: string;
+  leaveTypeId: string;
+  startDate: string;
+  endDate: string;
+  days: number;
+  reason: string;
+  status: 'pending_hod' | 'pending_admin' | 'approved' | 'rejected';
+  appliedDate: string;
+
+  hodComment?: string;
+  adminComment?: string;
+
+  hodActionBy?: string;
+  hodActionDate?: string;
+
+  adminActionBy?: string;
+  adminActionDate?: string;
 }
 
 
