@@ -24,6 +24,7 @@ import EmployeeCategory from './pages/EmployeeCategory'
 import LeaveEntitlements from './pages/LeaveEntitlements'
 import RolesPermissions from './pages/RolesPermissions'
 import HODPendingReviews from './pages/HODPendingReviews'
+import ApplicationDetails from './pages/ApplicationDetails'
 
 const queryClient = new QueryClient()
 
@@ -38,6 +39,8 @@ const AppContent = () => {
         <Route path='/my-applications' element={<MyApplications />} />
         <Route path='/leave-history' element={<LeaveHistory />} />
         <Route path='/all-leaves' element={<AllLeaves />} />
+
+        <Route path="/application/:id" element={<ApplicationDetails />} />
         {/* <Route path='/leave-balances' element={<LeaveBalances />} /> */}
         {/* <Route path='/leave-types' element={<LeaveTypes />} /> */}
         
