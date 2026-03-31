@@ -25,7 +25,7 @@ import LeaveEntitlements from './pages/LeaveEntitlements'
 import RolesPermissions from './pages/RolesPermissions'
 import HODPendingReviews from './pages/HODPendingReviews'
 import ApplicationDetails from './pages/ApplicationDetails'
-import NotFound from './pages/NotFound'
+import NotFound from './pages/404'
 
 const queryClient = new QueryClient()
 
