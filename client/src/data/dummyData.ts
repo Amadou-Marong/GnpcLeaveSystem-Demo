@@ -321,7 +321,7 @@ export const leaveTypes: LeaveType[] = [
 ];
 
 export const leaveBalances: LeaveBalance[] = [
-  { id: '1', employeeId: '1', leaveTypeId: '1', year: 2024, total: 21, used: 8, pending: 3 },
+  { id: '1', employeeId: '1', leaveTypeId: '1', year: 2024, total: 21, used: 8, pending: 5 },
   { id: '2', employeeId: '1', leaveTypeId: '2', year: 2024, total: 10, used: 2, pending: 0 },
   { id: '3', employeeId: '1', leaveTypeId: '5', year: 2024, total: 14, used: 3, pending: 0 },
   { id: '4', employeeId: '2', leaveTypeId: '1', year: 2024, total: 21, used: 5, pending: 0 },
@@ -364,6 +364,29 @@ export const leaveApplications: LeaveApplication[] = [
     status: 'pending_admin',
     appliedDate: '2024-12-08',
   },
+  {
+    id: '4',
+    employeeId: '2',
+    leaveTypeId: '3',
+    startDate: '2024-12-20',
+    endDate: '2024-12-25',
+    days: 5,
+    reason: 'Family vacation during the holidays',
+    status: 'approved',
+    appliedDate: '2024-12-10',
+  },
+  {
+    id: '5',
+    employeeId: '2',
+    leaveTypeId: '3',
+    startDate: '2024-12-20',
+    endDate: '2024-12-25',
+    days: 5,
+    reason: 'Family vacation during the holidays',
+    status: 'rejected',
+    appliedDate: '2024-12-10',
+  },
+
 ];
 
 
