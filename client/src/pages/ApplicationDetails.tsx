@@ -81,8 +81,8 @@ const ApplicationDetails = () => {
     return date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
   };
 
-  const canEndorse = currentUser.role === 'hod' && application.status === 'pending_hod';
-  const canApprove = currentUser.role === 'approving_authority' && application.status === 'pending_admin';
+  const canEndorse = currentUser?.role === 'hod' && application.status === 'pending_hod';
+  const canApprove = currentUser?.role === 'admin' || currentUser?.role === 'hr' && application.status === 'pending_admin';
 
   const getWorkflowSteps = () => [
     {

@@ -25,6 +25,7 @@ import LeaveEntitlements from './pages/LeaveEntitlements'
 import RolesPermissions from './pages/RolesPermissions'
 import HODPendingReviews from './pages/HODPendingReviews'
 import ApplicationDetails from './pages/ApplicationDetails'
+import NotFound from './pages/NotFound'
 
 const queryClient = new QueryClient()
 
@@ -60,6 +61,8 @@ const AppContent = () => {
         <Route path='/roles-permissions' element={<RolesPermissions />} />
         <Route path='/audit-logs' element={<AuditLogs />} />
         <Route path='/settings' element={<Settings />} />
+
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

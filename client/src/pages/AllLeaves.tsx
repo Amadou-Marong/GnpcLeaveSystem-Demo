@@ -9,8 +9,10 @@ import { Layout } from "@/layout/Layout"
 import { useAuthStore } from "@/store/auth.store"
 import { Download, Eye, Search } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const AllLeaves = () => {
+  const navigate = useNavigate();
   const currentUser = useAuthStore((state) => state.currentUser);
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState('all');
@@ -229,7 +231,8 @@ const AllLeaves = () => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => setSelectedApplication(app)}
+                          // onClick={() => setSelectedApplication(app)}
+                          onClick={() => navigate(`/application/${app.id}`)}
                         >
                           <Eye className="w-4 h-4" />
                         </Button>
