@@ -27,6 +27,7 @@ import HODPendingReviews from './pages/HODPendingReviews'
 import ApplicationDetails from './pages/ApplicationDetails'
 import NotFound from './pages/404'
 import LeaveWorkflowQueue from './pages/LeaveWorkflowQueue'
+import Departments from './pages/Departments'
 
 const queryClient = new QueryClient()
 
@@ -58,6 +59,7 @@ const AppContent = () => {
         <Route path='/employees/:id' element={<EmployeeProfile />} />
         <Route path='/employee-categories' element={<EmployeeCategory />} />
         <Route path='/org-calendar' element={<OrganizationCalendar />} />
+        <Route path='/departments' element={<Departments />} />
         <Route path='/team-calendar' element={<TeamCalendar />} />
         <Route path='/reports' element={<Reports />} />
         <Route path='/roles-permissions' element={<RolesPermissions />} />

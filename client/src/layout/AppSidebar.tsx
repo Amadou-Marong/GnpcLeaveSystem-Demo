@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Clock4,
   UserCheck,
+  Building2,
 } from "lucide-react"
 
 import { NavLink, useLocation } from "react-router"
@@ -100,6 +101,11 @@ export function AppSidebar() {
                 { title: "Team Calendar", url: "/team-calendar", icon: Calendar },
                 { title: "Pending Reviews", url: "/pending-reviews", icon: Clock4 },
             ]
+        },
+        {
+            title: "Departments",
+            icon: Building2,
+            url: "/departments",
         },
         {
             title: "Organization Calendar",
