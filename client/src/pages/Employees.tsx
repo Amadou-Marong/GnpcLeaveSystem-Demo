@@ -1,11 +1,13 @@
+import AddEmployeeDialog from "@/components/employee/AddEmployeeDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { departments, getRoleLabel, users } from "@/data/dummyData";
+import { departments, getRoleLabel, users as initialUsers, type User } from "@/data/dummyData";
 import { Layout } from "@/layout/Layout"
 import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/store/auth.store";
 import { Eye, Mail, Phone, Search } from "lucide-react"
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -14,6 +16,9 @@ const Employees = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
+  const [users, setUsers] = useState<User[]>(initialUsers);
+  const { currentUser } = useAuthStore();
+  const isAdmin = currentUser?.role === 'admin';
   const navigate = useNavigate();
 
   const filteredEmployees = users.filter((user) => {
@@ -38,6 +43,17 @@ const Employees = () => {
             <h1 className="text-2xl font-bold text-foreground">Employees</h1>
             <p className="text-muted-foreground">Manage all employees in the system</p>
           </div>
+
+          {isAdmin && (
+            <AddEmployeeDialog onAdd={(emp) => {
+              const newUser: User = {
+                id: String(users.length + 1),
+                ...emp,
+                password: ""
+              };
+              setUsers([...users, newUser]);
+            }} />
+          )}
         </div>
 
         {/* Filters */}
