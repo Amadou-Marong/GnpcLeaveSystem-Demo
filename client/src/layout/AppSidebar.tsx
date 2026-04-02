@@ -60,6 +60,11 @@ export function AppSidebar() {
             url: "/",
         },
         {
+            title: "Organization Calendar",
+            icon: CalendarDays,
+            url: "/org-calendar"
+        },
+        {
             title: "Leave Management",
             icon: FileText,
             children: [
@@ -106,11 +111,6 @@ export function AppSidebar() {
             title: "Departments",
             icon: Building2,
             url: "/departments",
-        },
-        {
-            title: "Organization Calendar",
-            icon: CalendarDays,
-            url: "/org-calendar"
         },
         {
             title: "Settings",
