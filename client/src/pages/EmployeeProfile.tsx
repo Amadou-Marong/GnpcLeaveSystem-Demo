@@ -1,4 +1,5 @@
 import EditEmploymentHistoryDialog from "@/components/employee/EditEmploymentHistoryDialog";
+import ResetPasswordDialog from "@/components/employee/ResetPasswordDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +12,7 @@ import { getRoleLabel, leaveApplications, leaveBalances, leaveTypes, users as in
 import { toast } from "@/hooks/use-toast";
 import { Layout } from "@/layout/Layout"
 import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/store/auth.store";
 import { format } from "date-fns";
 import { ArrowLeft, Briefcase, Calendar, Edit, History, Mail, MapPin, Phone, Save, X } from "lucide-react";
 import { useState } from "react";
@@ -20,6 +22,8 @@ const EmployeeProfile = () => {
     const { id } = useParams<{ id: string }>();
     // const navigate = useNavigate();
     const user = initialUsers.find(u => u.id === id);
+    const { currentUser } = useAuthStore();
+    const isAdmin = currentUser?.role === 'admin';
     const [users, setUsers] = useState<User[]>(initialUsers);
     
     const [isEditing, setIsEditing] = useState(false);
@@ -114,6 +118,12 @@ const EmployeeProfile = () => {
         setIsEditing(true);
     };
 
+    const handleResetPassword = (newPassword: string, mustChangePassword: boolean) => {
+        setUsers(users.map(u => 
+        u.id === user?.id ? { ...u, password: newPassword, mustChangePassword } : u
+        ));
+    };
+
     const handleCancelEdit = () => {
         setEditForm({});
         setIsEditing(false);
@@ -153,10 +163,18 @@ const EmployeeProfile = () => {
                         <p className="text-muted-foreground">View and manage your profile information</p>
                     </div>
                     {!isEditing ? (
+                        <div className="flex gap-2">
+                        {isAdmin && (
+                            <ResetPasswordDialog 
+                            userName={user?.name ?? ''} 
+                            onReset={handleResetPassword} 
+                            />
+                        )}
                         <Button onClick={handleEdit} className="gap-2">
-                        <Edit className="w-4 h-4" />
-                        Edit Profile
+                            <Edit className="w-4 h-4" />
+                            Edit Profile
                         </Button>
+                        </div>
                     ) : (
                         <div className="flex gap-2">
                         <Button variant="outline" onClick={handleCancelEdit} className="gap-2">
