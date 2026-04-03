@@ -28,6 +28,7 @@ import ApplicationDetails from './pages/ApplicationDetails'
 import NotFound from './pages/404'
 import LeaveWorkflowQueue from './pages/LeaveWorkflowQueue'
 import Departments from './pages/Departments'
+import ChangePassword from './pages/ChangePassword'
 
 const queryClient = new QueryClient()
 
@@ -37,6 +38,8 @@ const AppContent = () => {
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+
         <Route path="/apply-leave" element={<ApplyLeave />} />
         <Route path="/apply-on-behalf" element={<ApplyOnBehalf />} />
         <Route path='/my-applications' element={<MyApplications />} />
